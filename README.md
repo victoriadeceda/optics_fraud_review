@@ -107,3 +107,7 @@ Providers with higher risk scores could be subject to additional reviews, pre-au
 #### 4. Collaboration with data teams
 
 Work closely with data engineers and analysts to identify additional data that could improve fraud detection. Better data availability would help build more effective monitoring dashboards and anomaly detection systems.
+
+## Limitations
+
+Missing data for full year comparison. 
