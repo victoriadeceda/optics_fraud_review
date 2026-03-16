@@ -1,0 +1,1 @@
+CREATE DATABASE healthcare_professional_claims

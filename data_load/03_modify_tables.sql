@@ -1,0 +1,1 @@
+\copy health_professional_claims_raw FROM '/Users/victoriadeceda/Documents/optics_fraud_review/ops_runner_technical_case_-_fraud__07-2023_.csv' DELIMITER ',' CSV HEADER;
