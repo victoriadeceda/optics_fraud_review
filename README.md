@@ -2,8 +2,6 @@
 
 Toward the end of the year, there appears to be a spike in claims, particularly for lunettes.
 
-*Show visualization of first and last table*
-
 #### Probable causes
 
 1. Annual optical allowances: one possible explanation is end-of-year benefit exhaustion, since mutuelles often include annual allowances for optical care. Because these limits reset at the beginning of the year, members may purchase glasses before the reset to use their remaining coverage, which can cause a spike in demand in November–December.
@@ -14,6 +12,15 @@ Toward the end of the year, there appears to be a spike in claims, particularly 
 
 These explanations do not necessarily indicate fraud. However, the magnitude of certain reimbursements appears unusually high compared to other providers. Kylian's frames, Les lunettes à Soso, and Roudoudou lentilles show significantly larger claim amounts than other professionals.
 
+![Table 1. December claims](files/Table1.png)
+*Kylian's frames, Les lunettes à Soso, Penthievre alambics, Queen optics and Roudoudou lentilles show significantly high claims compared to other professionals.*
+
+![Table 2. Lunettes year pattern](files/Table2.1.png)
+*Lunettes average amount seems consistent throughout the year but December; showing a spike of 5729,20€ in reimbursement amount.*
+
+![Table 1. Lentilles year pattern](files/Table2.png)
+*Lentilles show a consistent yearly pattern, with spikes in May and December. The December increase can be explained by benefit exhaustion. However, the May amount is also high and could be worth investigating further to understand the possible causes of this spike.*
+
 
 ## How would you identify if this trend could be related to fraud? What methods would you consider to investigate and potentially recover any misappropriated funds?
 
@@ -22,11 +29,12 @@ These explanations do not necessarily indicate fraud. However, the magnitude of 
     No enough data to review past december 2021 to december 2022.
 - Does it affect all professionals or only a few?
     Only a few professionals show a significant spike in December compared to others. It could be because they're larger clinics so that's why I compared high-spike professionals avg in december to their avg in the year. Results show their average is off by more than 500€. 
-- Is the spike concentrated in a specific product category? 
+- Is the spike concentrated in a specific product type? 
     Spike is concentrated in lunettes. Even though there's a slight spike in December for lentilles, it's smaller and could be explain by end of the year benefit exhaustion. 
-- Is there a big spike in average from the rest of the months compared to December?
+- Is there a big spike in average from the rest of the months compared to December? There is indeed a big gap in average when factoring in December. 
 
-*Add visualization of table 2 and 3 where averages are shown grouped by product*
+![Average yearly claims vs average claims filtering out December](files/Table3.png)
+*Bar graph visualizes average gaps in claims to further analyze December's influence in average yearly average. This graph have been generated using Looker Studio*.
 
 ### Key findings
 Comparing average gaps
@@ -58,36 +66,44 @@ If fraud is confirmed:
 3. Reimbursement clawbacks 
 
 Ultimately, there can also be legal consequences such as:
-1. Terminate provider contract and proceed with demand. 
+1. Terminate provider contract. 
 
 
 ## Based on your analysis, what proactive actions would you take or initiate to prevent similar fraud in the future?
 
 
-1. Automated dashboard for anomaly detection and real time analysis with reports para monitorear cambios en patrones de facturacion, profesionales que sean sospechosos o spikes en algún momento del año, especialmente diciembre por el récord que hay, se sabe que es un mes que puede tender a tener más spikes de fraudes, etc. 
-Formatting de las visualizaciones, de que si el monto cobrado por profesional en tal mes supera cierta cantidad, se muestre en rojo y así alertar a quienes reciben las alertas.
-Continuously compare providers’ claims against similar clinics to detect outliers early.
-flag repeated glasses + lenses claims for the same member.
- trigger review when December claims exceed historical averages by X%.
-Flags before payout
-Outlier detection rule: automatically flag claims >3× provider’s monthly average.
-Seasonality monitoring: automatically detect unusual spikes vs historical monthly patterns.
-Peer benchmarking: compare providers’ claims against the market average for the same product.
+#### 1. Automated monitoring and anomaly detection
 
-2. Supporting documentation when submitting claims above average 
-When submitting claims above their Avg (1000-3000), it's obligatory to add supporting documentation
-(treatment date so we can compare it to claims submission date, prescription validity(lenses+glasses together), acknowledging that we'd need to contact the patient to validate treatment)
-When submitting a high claim with documentation, automate a notification for possible fraud review. When it reaches the Ops Runner, the documentation's already there so that reduces claim handling times
+Implement an automated dashboard to monitor claims patterns and detect anomalies in real time. This dashboard could flag unusual spikes in reimbursements, particularly during high-risk periods such as December.
 
-3. Implement a provider risk score based on historical claim behavior.
-Risk indicators could include:
-unusually high reimbursement amounts
-large monthly fluctuations
-frequent high-value optical claims
-claims that deviate from peer averages
-Providers with higher risk scores could be subject to:
-additional claim reviews
-pre-authorization requirements
-targeted audits.
+Examples of automated rules can be:
+- Flagging claims significantly higher than a provider’s historical average.
+- Detecting unusual seasonal spikes compared to past trends.
+- Benchmarking providers against similar clinics to identify outliers.
+- Flagging repeated glasses + lenses claims for the same member with high reimbursement amount.
 
-4. Cross collab with data engineers to request missing data that could help us build better dashboards
+These alerts could be triggered before reimbursement is processed, allowing the fraud team to review suspicious claims before payout. 
+
+#### 2. Mandatory documentation for high-value claims
+
+Claims that exceed the professional's typical average (e.g., €1000–€3000 depending on the category) should require supporting documentation such as:
+- Treatment date (to compare with the claim submission date)
+- Valid prescription
+- Original invoice
+
+If a high-value claim is submitted, the system could automatically trigger a fraud review notification. Having documentation attached in advance would help the team investigate cases more efficiently.
+
+#### 3. Provider risk scoring
+
+Introduce a provider risk score based on historical claim behavior. Risk indicators could include:
+
+- High reimbursement amounts
+- Large monthly fluctuations
+- Frequent high-value claims
+- Claims that deviate significantly from other professionals' averages
+
+Providers with higher risk scores could be subject to additional reviews, pre-authorization requirements, or audits.
+
+#### 4. Collaboration with data teams
+
+Work closely with data engineers and analysts to identify additional data that could improve fraud detection. Better data availability would help build more effective monitoring dashboards and anomaly detection systems.
